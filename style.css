@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#app {
+    max-width: 900px;
+    margin: auto;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+    padding: 8px;
+    margin: 5px;
+    width: 200px;
+}
+
+.room {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.booked {
+    background-color: #ffe6e6;
+}
+
+.available {
+    background-color: #e6ffe6;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:disabled {
+    background-color: gray;
+}
+
+button:hover:enabled {
+    background-color: #0056b3;
+}
