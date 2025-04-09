@@ -1,32 +1,16 @@
-app.innerHTML = `
-<h2>Logg inn med nasjonalt lånekort</h2>
-<input 
-  type="text" 
-  placeholder="N12345678901" 
-  value="${model.loanCardNumber}" 
-  oninput="setLoanCardNumber(this.value)">
-<p style="font-size: 0.9em; color: gray;">
-  Skriv inn ditt nasjonale lånekortnummer (starter med "N" og har 11 siffer).
-</p>
-${model.loanCardNumber && !validLoanCard ? 
-  '<p style="color: red;">Ugyldig lånekortnummer</p>' : ''}
+function renderMeetingRooms(rooms) {
+  const roomListElement = document.getElementById('roomList');
+  roomListElement.innerHTML = ''; // Tømmer listen før rendering
 
-<label for="date">Dato:</label>
-<input type="date" id="date" onchange="changeDate(this.value)">
-
-<label for="time">Tid:</label>
-<input type="time" id="time" onchange="changeTime(this.value)">
-
-<div>${model.rooms.map(drawRoom).join('')}</div>
-`;
+  rooms.forEach(room => {
+      const li = document.createElement('li');
+      li.textContent = room.name;
+      li.style.color = room.isAvailable ? 'green' : 'red'; // Grønn hvis tilgjengelig, rød hvis ikke
+      roomListElement.appendChild(li);
+  });
 }
 
-function drawRoom(room) {
-    const isBooked = room.bookings.some (b => b.date === model.selectedDate && b.time === model.SelectedTime);
-    const statusClass = isBooked ? 'booked' : 'available';
-    const canBook = !isBooked && isValidLoanCard(model.loanCardNumber);
-    const button = isBooked
-    ? 'Opptatt' : canBook
-    : canBook
-    ? '<button'
+function displayLoginSection() {
+  document.getElementById('loginSection').style.display = 'block';
+  document.getElementById('meetingRooms').style.display = 'none';
 }

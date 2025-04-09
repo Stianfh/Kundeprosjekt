@@ -1,21 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking av Møterom - Hamar Bibliotek</title>
+    <title>Hamar Bibliotek - Møteromsbestilling</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="backgroundPage()">
-<header>
-    <h1>Hamar Bibliotek - Møteromsbooking</h1>
-</header>
+<body>
+    <div id="app">
+        <h1>Hamar Bibliotek - Møteromsbestilling</h1>
 
-<div id="app"></div>
+        <!-- Møterom (vises først) -->
+        <div id="meetingRooms">
+            <h2>Tilgjengelige Møterom</h2>
+            <ul id="roomList">
+                <!-- Dynamisk liste med møterom legges til her -->
+            </ul>
+            <!-- Påloggingsknapp vises under møterommene -->
+            <button id="loginButton">Logg inn</button>
+        </div>
 
-<script src="model.js"></script>
-<script src="view.js"></script>
-<script src="controller.js"></script>
-<script src="app.js"></script>
+        <!-- Logg inn skjema (skjult til bruker klikker på logg inn) -->
+        <div id="loginSection" style="display: none;">
+            <h3>Logg inn</h3>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Brukernavn" required />
+                <input type="password" id="password" placeholder="Passord" required />
+                <button type="submit">Logg inn</button>
+            </form>
+            <div id="loginMessage"></div>
+        </div>
+
+        <!-- Etter innlogging (vises kun for ansatt/admin) -->
+        <div id="employeeInterface" style="display: none;">
+            <h3>Mine Bookinger</h3>
+            <ul id="bookingsList">
+                <!-- Bookinger vises her -->
+            </ul>
+        </div>
+
+        <div id="adminInterface" style="display: none;">
+            <h3>Admin Funksjoner</h3>
+            <button id="addUserButton">Legg til Bruker</button>
+            <button id="deleteUserButton">Slett Bruker</button>
+            <button id="viewUsersButton">Vis Brukere</button>
+        </div>
+
+        <!-- Nasjonalt lånekort (skjult til pålogging) -->
+        <div id="nationalCardSection" style="display: none;">
+            <h3>Logg inn med nasjonalt lånekort</h3>
+            <form id="nationalCardForm">
+                <input type="text" id="cardNumber" placeholder="Lånekortnummer" required />
+                <button type="submit">Logg inn med kort</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script-filer -->
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="common.js"></script> <!-- Publikums funksjonalitet -->
+    <script src="admin.js"></script>  <!-- Admin funksjonalitet -->
+    <script src="employee.js"></script>  <!-- Ansatt funksjonalitet -->
 </body>
 </html>
